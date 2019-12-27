@@ -1,0 +1,16 @@
+# THIS FILE HAS BEEN AUTOMATICALLY GENERATED
+# PLEASE ENSURE YOU UNDERSTAND ITS PURPOSE AND ORIGIN BEFORE EDITING.
+
+terraform {
+  # fix the provider version
+  required_version = "${terraform_required_version}"
+
+  #add role_arn to use assumed roles to access the bucket
+  backend "s3" {
+    encrypt        = true
+    bucket         = "${aws_s3_bucket}--${environment}-${account_number}"
+    key            = "state-bucket/terraform.tfstate"
+    dynamodb_table = "${dynamodb_table}--${environment}"
+    region         = "${aws_region}"
+  }
+}
