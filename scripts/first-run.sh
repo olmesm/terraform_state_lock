@@ -31,13 +31,13 @@ rm -rf .terraform
 terraform init -reconfigure
 
 # Create the lock DB
-terraform apply -target module.aws_dynamodb_table.dynamodb_state_lock -auto-approve
+terraform apply -target module.terraform_state_lock.aws_dynamodb_table.dynamodb_state_lock -auto-approve
 
 # Create the bucket
-terraform apply -target module.aws_s3_bucket.state_bucket -auto-approve
+terraform apply -target module.terraform_state_lock.aws_s3_bucket.state_bucket -auto-approve
 
 # Make the remote state file
-terraform apply -target module.local_file.remote_state -lock=false -auto-approve
+terraform apply -target module.terraform_state_lock.local_file.remote_state -lock=false -auto-approve
 
 # Copy state up
 terraform init -force-copy
