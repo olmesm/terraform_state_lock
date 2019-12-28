@@ -25,3 +25,12 @@ terraform init
 # Run the setup-script
 sh .terraform/modules/terraform_state_lock/scripts/first-run.sh
 ```
+
+Add to `./terraform.tfvars`
+
+```terraform
+common_tags = {
+  application = "terraform"
+  environment = "develop"
+}
+```

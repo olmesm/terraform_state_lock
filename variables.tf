@@ -25,3 +25,13 @@ variable "aws_s3_bucket" {
   type = string
   default = "terraform-state"
 }
+
+variable "service_name" {
+  type = string
+  description = "The name of the service"
+}
+
+variable "infrastructure_section" {
+  type = string
+  description = "The section of the infrastructure"
+}

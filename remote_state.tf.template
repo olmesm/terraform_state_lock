@@ -9,7 +9,7 @@ terraform {
   backend "s3" {
     encrypt        = true
     bucket         = "${aws_s3_bucket}--${environment}-${account_number}"
-    key            = "state-bucket/terraform.tfstate"
+    key            = "${service_name}/${infrastructure_section}/terraform.tfstate"
     dynamodb_table = "${dynamodb_table}--${environment}"
     region         = "${aws_region}"
   }

@@ -8,5 +8,7 @@ data "template_file" "remote_state" {
     dynamodb_table = var.dynamodb_table
     aws_s3_bucket = var.aws_s3_bucket
     environment = var.common_tags.environment
+    service_name = var.service_name
+    infrastructure_section = var.infrastructure_section
   }
 }
